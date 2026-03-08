@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="250" viewBox="0 0 400 250">
+  <rect width="400" height="250" fill="#12151c"/>
+  <rect x="160" y="80" width="80" height="60" rx="6" fill="#252a38"/>
+  <circle cx="175" cy="95" r="8" fill="#5a6374"/>
+  <polygon points="155,140 200,100 245,140" fill="#252a38"/>
+  <polygon points="180,140 215,115 250,140" fill="#1a1e28"/>
+  <text x="200" y="180" font-family="sans-serif" font-size="14" fill="#5a6374" text-anchor="middle">Sem imagem</text>
+</svg>

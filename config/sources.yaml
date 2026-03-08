@@ -1,0 +1,107 @@
+feeds:
+  - name: "G1"
+    url: "https://g1.globo.com/rss/g1/"
+    weight: 1.0
+    category_default: "geral"
+
+  - name: "CNN Brasil"
+    url: "https://www.cnnbrasil.com.br/feed/"
+    weight: 1.0
+    category_default: "geral"
+
+  - name: "Folha de S.Paulo"
+    url: "https://feeds.folha.uol.com.br/emcimadahora/rss091.xml"
+    weight: 0.9
+    category_default: "geral"
+
+  - name: "R7"
+    url: "https://noticias.r7.com/feed.xml"
+    weight: 0.8
+    category_default: "geral"
+
+  - name: "UOL Noticias"
+    url: "https://rss.uol.com.br/feed/noticias.xml"
+    weight: 0.8
+    category_default: "geral"
+
+  - name: "Agencia Brasil"
+    url: "https://agenciabrasil.ebc.com.br/rss/ultimasnoticias/feed.xml"
+    weight: 0.9
+    category_default: "geral"
+
+  - name: "G1 Economia"
+    url: "https://g1.globo.com/rss/g1/economia/"
+    weight: 0.9
+    category_default: "economia"
+
+  - name: "G1 Politica"
+    url: "https://g1.globo.com/rss/g1/politica/"
+    weight: 0.9
+    category_default: "politica"
+
+  - name: "G1 Saude"
+    url: "https://g1.globo.com/rss/g1/ciencia-e-saude/"
+    weight: 0.8
+    category_default: "saude"
+
+  - name: "G1 Tecnologia"
+    url: "https://g1.globo.com/rss/g1/tecnologia/"
+    weight: 0.8
+    category_default: "tech"
+
+keywords:
+  politica:
+    - "governo"
+    - "presidente"
+    - "lula"
+    - "congresso"
+    - "senado"
+    - "camara"
+    - "eleicao"
+    - "ministerio"
+    - "partido"
+    - "voto"
+  economia:
+    - "inflacao"
+    - "dolar"
+    - "selic"
+    - "pib"
+    - "emprego"
+    - "desemprego"
+    - "bolsa"
+    - "mercado"
+    - "banco central"
+    - "imposto"
+  saude:
+    - "saude"
+    - "hospital"
+    - "doenca"
+    - "vacina"
+    - "sus"
+    - "medico"
+    - "epidemia"
+    - "pandemia"
+    - "tratamento"
+    - "anvisa"
+  tech:
+    - "tecnologia"
+    - "inteligencia artificial"
+    - "ia"
+    - "startup"
+    - "app"
+    - "software"
+    - "digital"
+    - "internet"
+    - "seguranca"
+    - "dados"
+  esporte:
+    - "futebol"
+    - "copa"
+    - "campeonato"
+    - "olimpiadas"
+    - "atletismo"
+    - "tenis"
+    - "basquete"
+    - "flamengo"
+    - "corinthians"
+    - "palmeiras"

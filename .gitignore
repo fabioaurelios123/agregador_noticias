@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtualenv
+venv/
+.env/
+
+# arquivos de build
+dist/
+build/
+
+# outputs
+video/output/

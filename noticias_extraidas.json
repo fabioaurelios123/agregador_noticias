@@ -1,0 +1,60 @@
+[
+  {
+    "url": "https://www.cnnbrasil.com.br/eleicoes/psd-conclui-road-show-de-filiacoes-com-evento-em-presidente-prudente-sp/",
+    "crawled_at": "2026-03-08T10:23:43.785345",
+    "modo": "requests_http",
+    "dados": {
+      "titulo": "PSD conclui 'road show' de filiações com evento em Presidente Prudente (SP)",
+      "autor": "Não informado",
+      "data_publicacao": "Não informada",
+      "veiculo": "CNN Brasil",
+      "categoria": "Política",
+      "resumo": "O PSD realizou evento de filiação em Presidente Prudente (SP), encerrando uma série de eventos pelo país. O deputado estadual Mauro Bragato, que deixa o PSDB após 11 mandatos, filiou-se ao partido na presença do presidente nacional Gilberto Kassab e do governador de Goiás Ronaldo Caiado. Kassab afirmou que o partido tinha Tarcísio de Freitas como preferido para a Presidência, mas que ele optou pela reeleição em São Paulo, enquanto Caiado reforçou sua disposição para ser candidato.",
+      "topicos_principais": [
+        "Filiação partidária",
+        "Evento político em Presidente Prudente",
+        "Pré-candidatura presidencial",
+        "Política estadual e regional"
+      ],
+      "entidades_mencionadas": {
+        "pessoas": [
+          "Gilberto Kassab",
+          "Ronaldo Caiado",
+          "Mauro Bragato",
+          "Milton Carlos de Mello",
+          "Cezar Saito",
+          "Tarcísio de Freitas",
+          "Eduardo",
+          "Ratinho Júnior"
+        ],
+        "organizacoes": [
+          "PSD",
+          "Partido Social Democrático",
+          "PSDB",
+          "Assembleia Legislativa",
+          "PP",
+          "Partido Progressista"
+        ],
+        "locais": [
+          "Presidente Prudente",
+          "Oeste Paulista",
+          "São Paulo",
+          "Goiás",
+          "Paraná"
+        ]
+      },
+      "sentimento": "neutro",
+      "palavras_chave": [
+        "PSD",
+        "filiação",
+        "Presidente Prudente",
+        "Mauro Bragato",
+        "Gilberto Kassab",
+        "Ronaldo Caiado",
+        "pré-candidatura",
+        "eleições"
+      ]
+    },
+    "erro": null
+  }
+]

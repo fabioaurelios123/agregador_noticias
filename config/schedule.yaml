@@ -1,0 +1,23 @@
+streaming:
+  daytime_start: 6    # 06:00
+  daytime_end: 23     # 23:00
+  # Entre 23:00 e 06:00 -> modo replay (repete notícias do dia)
+
+content:
+  min_videos_before_replay: 5   # mínimo de vídeos antes de entrar no replay noturno
+  max_article_age_hours: 24     # ignorar artigos mais velhos que isso
+  top_articles_per_cycle: 10    # quantas notícias top processar por ciclo
+
+video:
+  resolution_width: 1920
+  resolution_height: 1080
+  fps: 30
+  intro_duration_s: 5
+  outro_duration_s: 4
+  min_duration_s: 60
+  max_duration_s: 300
+
+audio:
+  background_music_volume: 0.15   # volume da trilha de fundo (0.0 a 1.0)
+  speech_pause_between_lines_ms: 600
+  intro_music_duration_s: 3

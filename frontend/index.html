@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brasil24 — Noticias em Tempo Real</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-left">
+      <div class="logo">
+        <span class="logo-b">B</span>RASIL<span class="logo-24">24</span>
+      </div>
+      <div class="live-badge">
+        <span class="live-dot"></span>
+        AO VIVO
+      </div>
+    </div>
+    <div class="header-center">
+      <div class="date-time" id="clock"></div>
+    </div>
+    <div class="header-right">
+      <div class="category-filters">
+        <button class="cat-btn active" data-cat="">Tudo</button>
+        <button class="cat-btn" data-cat="politica">Política</button>
+        <button class="cat-btn" data-cat="economia">Economia</button>
+        <button class="cat-btn" data-cat="saude">Saúde</button>
+        <button class="cat-btn" data-cat="tech">Tech</button>
+        <button class="cat-btn" data-cat="esporte">Esporte</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- BREAKING NEWS BANNER -->
+  <div class="breaking-banner" id="breakingBanner" style="display:none">
+    <span class="breaking-label">URGENTE</span>
+    <span class="breaking-text" id="breakingText"></span>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-grid">
+    <!-- FEATURED NEWS -->
+    <section class="featured-section">
+      <div class="featured-card" id="featuredCard">
+        <div class="featured-image-wrap">
+          <img id="featuredImg" src="" alt="" onerror="this.src='/static/placeholder.svg'" />
+          <div class="featured-overlay"></div>
+        </div>
+        <div class="featured-content">
+          <span class="category-tag" id="featuredCat"></span>
+          <h1 class="featured-title" id="featuredTitle">Carregando as principais notícias...</h1>
+          <p class="featured-source" id="featuredSource"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECONDARY NEWS GRID -->
+    <section class="secondary-grid" id="secondaryGrid">
+      <!-- populated by JS -->
+    </section>
+  </main>
+
+  <!-- CATEGORY SECTION -->
+  <section class="all-news-section">
+    <div class="section-header">
+      <h2 class="section-title">Últimas Notícias</h2>
+      <div class="news-count" id="newsCount"></div>
+    </div>
+    <div class="news-list" id="newsList">
+      <!-- populated by JS -->
+    </div>
+    <button class="load-more-btn" id="loadMoreBtn" onclick="loadMore()">Carregar mais</button>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker-wrap">
+    <div class="ticker-label">AGORA</div>
+    <div class="ticker-track" id="tickerTrack">
+      <div class="ticker-content" id="tickerContent"></div>
+    </div>
+  </div>
+
+  <!-- STREAM STATUS -->
+  <div class="stream-status" id="streamStatus"></div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

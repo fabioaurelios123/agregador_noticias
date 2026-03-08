@@ -1,0 +1,69 @@
+personas:
+  ana:
+    name: "Ana Silva"
+    role: "Ancora principal"
+    voice: "pt-BR-FranciscaNeural"
+    style: "Seria, profissional, objetiva e empática"
+    rate: "+0%"
+    pitch: "+0Hz"
+    color: "#E8A838"
+    intro: "Boa {period}, eu sou Ana Silva e estas são as principais notícias do Brasil."
+
+  carlos:
+    name: "Carlos Mendes"
+    role: "Analista político e econômico"
+    voice: "pt-BR-AntonioNeural"
+    style: "Analitico, perspicaz, critico e às vezes irônico"
+    rate: "-5%"
+    pitch: "-3Hz"
+    color: "#4A90D9"
+    intro: "Carlos Mendes aqui, com análise e contexto sobre as notícias de hoje."
+
+guests:
+  politica:
+    name: "Dra. Marina Souza"
+    role: "Especialista em política"
+    voice: "pt-BR-FranciscaNeural"
+    rate: "+5%"
+    pitch: "+8Hz"
+    color: "#C0392B"
+
+  economia:
+    name: "Prof. Roberto Alves"
+    role: "Economista"
+    voice: "pt-BR-AntonioNeural"
+    rate: "+0%"
+    pitch: "+5Hz"
+    color: "#27AE60"
+
+  saude:
+    name: "Dr. Lucas Costa"
+    role: "Médico e especialista em saúde pública"
+    voice: "pt-BR-AntonioNeural"
+    rate: "-3%"
+    pitch: "+8Hz"
+    color: "#8E44AD"
+
+  tech:
+    name: "Beatriz Lima"
+    role: "Especialista em tecnologia"
+    voice: "pt-BR-FranciscaNeural"
+    rate: "+8%"
+    pitch: "+5Hz"
+    color: "#16A085"
+
+  esporte:
+    name: "Rodrigo Santos"
+    role: "Comentarista esportivo"
+    voice: "pt-BR-AntonioNeural"
+    rate: "+10%"
+    pitch: "+3Hz"
+    color: "#E67E22"
+
+  geral:
+    name: "Prof. Roberto Alves"
+    role: "Analista"
+    voice: "pt-BR-AntonioNeural"
+    rate: "+0%"
+    pitch: "+5Hz"
+    color: "#27AE60"

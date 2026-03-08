@@ -1,0 +1,84 @@
+╔══════════════════════════════════════════════════════════════╗
+║           BRASIL24 — Pacote de Informações do Canal          ║
+╚══════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ NOME DO CANAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Brasil24
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ HANDLE (URL do canal)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+@brasil24tv
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ DESCRIÇÃO DO CANAL (cole no YouTube Studio → Personalização → Informações básicas)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔴 BRASIL24 — Notícias do Brasil em Tempo Real | 24 horas por dia
+
+Acompanhe as principais notícias do Brasil com análises aprofundadas, direto ao ponto e sem filtros. O Brasil24 transmite ao vivo 24 horas por dia, 7 dias por semana, com cobertura completa de:
+
+📰 Política nacional e internacional
+💰 Economia, mercado financeiro e negócios
+🏥 Saúde, ciência e tecnologia
+⚽ Esporte, cultura e entretenimento
+🌎 Brasil e o mundo
+
+Nossos apresentadores Ana Silva e Carlos Mendes trazem os fatos com profundidade, convidando especialistas de cada área para analisar os temas que mais impactam o seu dia a dia.
+
+✅ Inscreva-se e ative o sininho 🔔 para não perder nenhuma notícia!
+
+📡 Transmissão ao vivo todos os dias — sem interrupção.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ TAGS / PALAVRAS-CHAVE (para SEO — cole em "Tags" no YouTube Studio)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+noticias brasil, noticias ao vivo, brasil24, jornal ao vivo, politica brasil, economia brasil, noticias hoje, ao vivo 24 horas, breaking news brasil, noticias urgentes, jornalismo brasileiro, telejornal ao vivo, noticia de hoje, brasil noticias, noticias em tempo real
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ LINKS PARA REDES SOCIAIS (opcional — cole em "Links" no YouTube Studio)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Instagram: @brasil24tv
+X (Twitter): @brasil24tv
+Telegram:   t.me/brasil24tv
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ EMAIL DE CONTATO (opcional)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+contato@brasil24.tv
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ LOCALIZAÇÃO (opcional — para aparecer em buscas locais)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Brasil
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ COMO USAR OS ARQUIVOS DE IMAGEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. banner_youtube.png  → YouTube Studio → Personalização → Arte do canal → Fazer upload
+   Resolução: 2048x1152px (compatível com todos os dispositivos)
+   Zona segura para TV: área central de 1546x423px (conteúdo principal visível em todos os devices)
+
+2. profile_picture.png → YouTube Studio → Personalização → Informações básicas → Foto do perfil
+   Resolução: 500x500px PNG com transparência
+   O YouTube mostrará em formato circular — a imagem já foi criada com fundo circular
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ CONFIGURAÇÕES RECOMENDADAS NO YOUTUBE STUDIO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+→ Personalização → Layout do canal:
+  - Trailer do canal: coloque o primeiro episódio gerado
+  - Seções: "Transmissões ao vivo" + "Vídeos" + "Em destaque"
+
+→ Configurações → Canal → Informações básicas:
+  - Categoria: Notícias e política
+  - País: Brasil
+  - Palavras-chave: (cole as tags acima)
+
+→ Transmissões ao vivo → Configurações padrão:
+  - Título padrão: "🔴 AO VIVO | Brasil24 — Notícias em Tempo Real"
+  - Descrição padrão: (cole a descrição do canal acima)
+  - Categoria: Notícias e política
+  - Feito para crianças: NÃO
+  - Visibilidade: Público

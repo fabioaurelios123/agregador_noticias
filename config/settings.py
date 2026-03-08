@@ -27,6 +27,7 @@ class Settings(BaseSettings):
     # Ollama settings
     ollama_base_url: str = "http://localhost:11434"
     ollama_model: str = "llama3.2"
+    ollama_api_key: str = ""
 
     # Batch pipeline settings
     batch_top_n_per_source: int = 5

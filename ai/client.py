@@ -69,8 +69,12 @@ def _chat_ollama(system: str, user: str, max_tokens: int) -> str:
     }
     if options:
         payload["options"] = options
+    headers = {}
+    if settings.ollama_api_key:
+        headers["Authorization"] = f"Bearer {settings.ollama_api_key}"
+
     try:
-        r = httpx.post(url, json=payload, timeout=120)
+        r = httpx.post(url, json=payload, headers=headers, timeout=120)
         r.raise_for_status()
         data = r.json()
         return data["message"]["content"].strip()

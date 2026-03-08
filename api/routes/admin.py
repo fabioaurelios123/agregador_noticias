@@ -4,10 +4,13 @@ Todas as operações de gerenciamento do canal.
 """
 import asyncio
 import json
+import logging
 import os
 import re
 import shutil
 import signal
+
+logger = logging.getLogger(__name__)
 import subprocess
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -837,3 +840,74 @@ async def requeue_episode(episode_id: int, db: Session = Depends(get_db)):
     ep.streamed = False
     db.commit()
     return {"status": "requeued"}
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# DATABASE RESET
+# ══════════════════════════════════════════════════════════════════════════════
+
+class ResetBody(BaseModel):
+    confirm: str   # deve ser "RESETAR" para confirmar
+
+@router.post("/database/reset")
+async def database_reset(body: ResetBody, db: Session = Depends(get_db)):
+    """
+    Apaga todos os artigos, episódios, batch_runs e stream_queue.
+    Remove também os arquivos de vídeo/áudio gerados.
+    Requer confirmação: {"confirm": "RESETAR"}.
+    """
+    if body.confirm != "RESETAR":
+        raise HTTPException(400, "Confirmação inválida. Envie {\"confirm\": \"RESETAR\"}")
+
+    if _stream_is_live():
+        raise HTTPException(400, "Pare o stream antes de resetar a base")
+
+    stats = {"articles": 0, "episodes": 0, "batch_runs": 0, "files_removed": 0}
+
+    # Remove arquivos físicos dos episódios antes de apagar o banco
+    episodes = db.query(Episode).all()
+    stats["episodes"] = len(episodes)
+    for ep in episodes:
+        for path_field in [ep.video_path, ep.audio_path]:
+            if path_field:
+                p = Path(path_field)
+                try:
+                    if p.exists():
+                        p.unlink()
+                        stats["files_removed"] += 1
+                    # Remove diretório do episódio se vazio
+                    parent = p.parent
+                    if parent.exists() and not any(parent.iterdir()):
+                        parent.rmdir()
+                except Exception:
+                    pass
+
+    # Remove diretórios de batch vazios
+    output_dir = settings.video_output_path
+    if output_dir.exists():
+        for d in output_dir.iterdir():
+            if d.is_dir():
+                try:
+                    shutil.rmtree(d)
+                    stats["files_removed"] += 1
+                except Exception:
+                    pass
+
+    # Apaga registros do banco na ordem correta (FK)
+    from database.models import StreamQueue
+    db.query(StreamQueue).delete()
+    db.query(Episode).delete()
+    stats["batch_runs"] = db.query(BatchRun).count()
+    db.query(BatchRun).delete()
+    stats["articles"] = db.query(Article).count()
+    db.query(Article).delete()
+    db.commit()
+
+    # Limpa estado do stream em memória
+    with _stream_queue_lock:
+        _stream_queue.clear()
+        _stream_current.clear()
+        _stream_played.clear()
+
+    logger.warning(f"DATABASE RESET: {stats}")
+    return {"status": "reset_complete", "removed": stats}

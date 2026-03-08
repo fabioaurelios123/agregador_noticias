@@ -1338,6 +1338,23 @@
           </button>
           <button class="btn btn-secondary" id="btnReloadSettings">↻ Recarregar</button>
         </div>
+
+        <!-- RESET -->
+        <div class="card" style="border:1px solid #7f1d1d;background:#120a0a">
+          <div class="card-title" style="color:#f87171">⚠️ Zona de Perigo</div>
+          <p style="font-size:13px;color:var(--muted);margin-bottom:16px">
+            O reset apaga <strong style="color:#f87171">todos os artigos, episódios e batch runs</strong>
+            do banco de dados e remove os arquivos de vídeo/áudio gerados.
+            Use apenas para começar um novo dia do zero.
+          </p>
+          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+            <button class="btn btn-danger" id="btnResetDB" style="background:#991b1b">
+              <span class="btn-spinner"></span>
+              <span class="btn-text">🗑 Resetar Base de Dados</span>
+            </button>
+            <span class="text-muted" style="font-size:12px">Uma confirmação será solicitada.</span>
+          </div>
+        </div>
       </div>
 
       <!-- ═══════════════════════════════════════════════════
@@ -2451,6 +2468,44 @@ function startPolling() {
 }
 
 // ═══════════════════════════════════════════════════════
+//  RESET DE BASE DE DADOS
+// ═══════════════════════════════════════════════════════
+document.getElementById('btnResetDB').addEventListener('click', () => {
+  // Abre modal de confirmação
+  document.getElementById('modalReset').style.display = 'flex';
+  document.getElementById('resetConfirmInput').value = '';
+  document.getElementById('btnConfirmReset').disabled = true;
+});
+
+document.getElementById('resetConfirmInput').addEventListener('input', (e) => {
+  document.getElementById('btnConfirmReset').disabled = e.target.value !== 'RESETAR';
+});
+
+document.getElementById('btnCancelReset').addEventListener('click', () => {
+  document.getElementById('modalReset').style.display = 'none';
+});
+
+document.getElementById('btnConfirmReset').addEventListener('click', async () => {
+  const btn = document.getElementById('btnConfirmReset');
+  setLoading(btn, true);
+  try {
+    const r = await post('/database/reset', {confirm: 'RESETAR'});
+    document.getElementById('modalReset').style.display = 'none';
+    const rem = r.removed || {};
+    toast(
+      `Reset completo! Removidos: ${rem.articles ?? 0} artigos, ${rem.episodes ?? 0} episódios, ${rem.files_removed ?? 0} arquivos.`,
+      'success'
+    );
+    // Recarrega stats
+    setTimeout(loadStats, 500);
+  } catch(e) {
+    toast('Erro ao resetar: ' + e.message, 'error');
+  } finally {
+    setLoading(btn, false);
+  }
+});
+
+// ═══════════════════════════════════════════════════════
 //  INIT
 // ═══════════════════════════════════════════════════════
 loadStats();
@@ -2458,5 +2513,39 @@ loadBatchRuns();
 connectWS();
 startPolling();
 </script>
+
+<!-- ── MODAL RESET ── -->
+<div id="modalReset" style="
+  display:none; position:fixed; inset:0; z-index:9999;
+  background:rgba(0,0,0,.7); align-items:center; justify-content:center">
+  <div style="
+    background:#0f1524; border:1px solid #7f1d1d; border-radius:16px;
+    padding:32px; max-width:440px; width:90%; box-shadow:0 24px 60px rgba(0,0,0,.6)">
+    <div style="font-size:22px; font-weight:800; color:#f87171; margin-bottom:8px">
+      ⚠️ Confirmar Reset
+    </div>
+    <p style="color:var(--muted); font-size:13px; margin-bottom:20px; line-height:1.6">
+      Esta ação é <strong style="color:#f87171">irreversível</strong>.<br>
+      Serão apagados <strong>todos os artigos, episódios, batch runs</strong> e
+      os arquivos de vídeo/áudio do disco.<br><br>
+      Para confirmar, digite <code style="background:#1e2d4a;padding:2px 6px;border-radius:4px;color:#f87171">RESETAR</code> abaixo:
+    </p>
+    <input
+      id="resetConfirmInput"
+      type="text"
+      placeholder="Digite RESETAR"
+      style="width:100%; margin-bottom:16px; font-size:15px;
+             border:1px solid #7f1d1d; background:#120a0a; color:#f87171;
+             text-transform:uppercase; letter-spacing:2px; text-align:center"
+    />
+    <div style="display:flex; gap:12px; justify-content:flex-end">
+      <button class="btn btn-secondary" id="btnCancelReset">Cancelar</button>
+      <button class="btn btn-danger" id="btnConfirmReset" disabled style="background:#991b1b">
+        <span class="btn-spinner"></span>
+        <span class="btn-text">🗑 Confirmar Reset</span>
+      </button>
+    </div>
+  </div>
+</div>
 </body>
 </html>

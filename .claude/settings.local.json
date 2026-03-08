@@ -5,7 +5,9 @@
       "Bash(venv/bin/pip:*)",
       "Bash(ps:*)",
       "Bash(ls:*)",
-      "Bash(pkill:*)"
+      "Bash(pkill:*)",
+      "Bash(curl:*)",
+      "Bash(fuser:*)"
     ]
   }
 }

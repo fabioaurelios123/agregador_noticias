@@ -40,5 +40,13 @@ def get_db() -> Session:
 
 
 def init_db():
-    """Initialize the database and create all tables."""
-    get_engine()
+    """Initialize the database, create all tables, and apply incremental migrations."""
+    engine = get_engine()
+    # Incremental migrations for columns added after initial schema
+    from sqlalchemy import text, inspect
+    insp = inspect(engine)
+    with engine.connect() as conn:
+        existing_cols = [c["name"] for c in insp.get_columns("episodes")]
+        if "batch_run_id" not in existing_cols:
+            conn.execute(text("ALTER TABLE episodes ADD COLUMN batch_run_id INTEGER REFERENCES batch_runs(id)"))
+            conn.commit()

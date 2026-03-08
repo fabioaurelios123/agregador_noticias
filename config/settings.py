@@ -28,6 +28,19 @@ class Settings(BaseSettings):
     ollama_base_url: str = "http://localhost:11434"
     ollama_model: str = "llama3.2"
 
+    # Batch pipeline settings
+    batch_top_n_per_source: int = 5
+    batch_min_videos_before_stream: int = 3
+    batch_stream_after_generation: bool = False
+    batch_cleanup_older_days: int = 1
+    batch_max_parallel_generations: int = 2
+
+    # Stream settings
+    stream_rtmp_url: str = "rtmp://a.rtmp.youtube.com/live2"
+    stream_ffmpeg_preset: str = "veryfast"
+    stream_video_bitrate: str = "3000k"
+    stream_audio_bitrate: str = "128k"
+
     @property
     def ai_available(self) -> bool:
         if self.ai_provider == "anthropic":

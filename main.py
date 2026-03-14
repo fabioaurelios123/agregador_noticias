@@ -59,11 +59,13 @@ from api.routes.news import router as news_router
 from api.routes.stream import router as stream_router
 from api.routes.health import router as health_router
 from api.routes.admin import router as admin_router
+from api.routes.reader import router as reader_router
 
 app.include_router(news_router)
 app.include_router(stream_router)
 app.include_router(health_router)
 app.include_router(admin_router)
+app.include_router(reader_router)
 
 # ── WebSocket ─────────────────────────────────────────────────
 from api.websocket import websocket_endpoint

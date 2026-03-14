@@ -45,7 +45,12 @@ RSS Feeds (G1, CNN Brasil, Folha, R7, UOL...)
 
 ## Pré-requisitos
 
-### Sistema
+Escolha entre **Docker** (recomendado, sem precisar instalar nada) ou **Python + FFmpeg** (instalação manual).
+
+### Docker (recomendado)
+- [Docker Desktop](https://docs.docker.com/get-docker/) (Windows/macOS) ou Docker Engine + Docker Compose Plugin (Linux)
+
+### Python manual
 - Python 3.10 ou superior
 - FFmpeg instalado no sistema
 
@@ -56,40 +61,167 @@ sudo apt-get install -y ffmpeg
 # macOS (Homebrew)
 brew install ffmpeg
 
-# Windows
-# Baixar em https://ffmpeg.org/download.html e adicionar ao PATH
-```
-
-### Verificar instalações
-```bash
-python3 --version   # Python 3.10+
-ffmpeg -version     # FFmpeg instalado
+# Windows: baixar em https://ffmpeg.org/download.html e adicionar ao PATH
 ```
 
 ---
 
-## Instalação
+## Docker (recomendado)
 
-### 1. Clonar / entrar no diretório
+Docker é a forma mais simples — sem instalar Python, FFmpeg ou dependências.
+
+### Cenário 1 — Modo sem IA (testar o sistema rapidamente)
+
 ```bash
-cd /root/agregardor_noticias
+cp .env.example .env
+# AI_PROVIDER=none já é o padrão — não precisa editar nada
+
+docker compose up -d
+# Acesse: http://localhost:8000
 ```
 
-### 2. Criar ambiente virtual
+---
+
+### Cenário 2 — Com Anthropic Claude
+
+```bash
+cp .env.example .env
+```
+
+Edite o `.env`:
+```env
+AI_PROVIDER=anthropic
+ANTHROPIC_API_KEY=sk-ant-...
+```
+
+```bash
+docker compose up -d
+```
+
+---
+
+### Cenário 3 — Com Ollama (IA local gratuita)
+
+#### Opção A — Ollama em container Docker (tudo junto)
+
+Edite o `.env`:
+```env
+AI_PROVIDER=ollama
+OLLAMA_BASE_URL=http://ollama:11434
+OLLAMA_MODEL=llama3.2
+```
+
+```bash
+# Sobe a aplicação + Ollama
+docker compose --profile ollama up -d
+
+# Baixar o modelo (primeira vez — pode demorar, ~2GB)
+docker compose exec ollama ollama pull llama3.2
+
+# Verificar modelos disponíveis
+docker compose exec ollama ollama list
+```
+
+> Para usar GPU NVIDIA com o Ollama, descomente o bloco `deploy:` no `docker-compose.yml`.
+
+#### Opção B — Ollama já instalado no host
+
+```bash
+ollama serve   # se ainda não estiver rodando
+```
+
+Edite o `.env`:
+```env
+AI_PROVIDER=ollama
+OLLAMA_BASE_URL=http://host.docker.internal:11434
+OLLAMA_MODEL=llama3.2
+```
+
+```bash
+docker compose up -d
+```
+
+> **Linux:** o `extra_hosts: host.docker.internal:host-gateway` já está configurado no `docker-compose.yml`, então `host.docker.internal` funciona sem configuração extra.
+
+---
+
+### Cenário 4 — Com transmissão ao YouTube
+
+Edite o `.env` (em qualquer um dos cenários acima):
+```env
+YOUTUBE_STREAM_KEY=xxxx-xxxx-xxxx-xxxx
+```
+
+```bash
+docker compose up -d
+
+# Iniciar transmissão via API
+curl -X POST http://localhost:8000/api/admin/start-stream
+
+# Parar transmissão
+curl -X POST http://localhost:8000/api/admin/stop-stream
+```
+
+---
+
+### Volumes Docker (persistência de dados)
+
+Os dados são preservados em volumes nomeados — não se perdem ao reiniciar ou recriar containers:
+
+| Volume | Conteúdo |
+|---|---|
+| `brasil24_db` | Banco de dados SQLite (`database/news.db`) |
+| `brasil24_videos` | Vídeos gerados (`video/output/`) |
+| `brasil24_assets` | Trilha de fundo (`video/assets/bg_music.mp3`) |
+| `ollama_data` | Modelos Ollama baixados (perfil `ollama`) |
+
+Para apagar tudo e começar do zero:
+```bash
+docker compose down -v
+```
+
+---
+
+### Comandos Docker úteis
+
+```bash
+# Ver logs em tempo real
+docker compose logs -f brasil24
+
+# Reiniciar o app sem recriar
+docker compose restart brasil24
+
+# Rebuild após alterar requirements.txt
+docker compose build --no-cache && docker compose up -d
+
+# Executar diagnóstico dentro do container
+docker compose exec brasil24 python diagnose.py
+
+# Verificar artigos e episódios no banco
+docker compose exec brasil24 python -c "
+from database.db import get_session_factory
+from database.models import Article, Episode
+db = get_session_factory()()
+print(f'Artigos: {db.query(Article).count()}')
+print(f'Episódios: {db.query(Episode).count()}')
+"
+
+# Forçar fetch de notícias agora
+curl -X POST http://localhost:8000/api/admin/fetch
+```
+
+---
+
+## Instalação manual (sem Docker)
+
+### 1. Criar ambiente virtual
 ```bash
 python3 -m venv venv
+source venv/bin/activate       # Linux/macOS
+# venv\Scripts\activate        # Windows
 ```
 
-### 3. Ativar o ambiente virtual
-```bash
-# Linux/macOS
-source venv/bin/activate
-
-# Windows
-venv\Scripts\activate
-```
-
-### 4. Instalar dependências
+### 2. Instalar dependências
 ```bash
 pip install -r requirements.txt
 ```
@@ -203,7 +335,7 @@ PORT=8000
 
 ---
 
-## Rodando o Servidor
+## Rodando o Servidor (instalação manual)
 
 ### Iniciar o servidor
 ```bash

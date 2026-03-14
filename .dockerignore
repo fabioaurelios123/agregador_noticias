@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+
+# Ambiente virtual
+venv/
+.venv/
+env/
+
+# Configuração local (não incluir chaves no build)
+.env
+
+# Dados gerados (serão montados como volumes)
+database/news.db
+video/output/
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Docker (não recursivo)
+Dockerfile
+docker-compose.yml
+.dockerignore
